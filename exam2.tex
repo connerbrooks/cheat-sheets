@@ -108,8 +108,10 @@ A \textbf{\textit{Turing machine}} is a 7-tuple, \\
   \item $Q$ is the set of states, 
   \item $\Sigma$ is the input alphabet not containing the \textbf{\textit{blank symbol}} $\sqcup$ 
   \item $\Gamma$ is the tape alphabet, where $\sqcup\ \in\ \Gamma$ and $\Sigma\ \subseteq\ \Gamma$,
-\item $\delta:\ Q \times \Gamma\ \rightarrow Q \times \Gamma \times \{L,\ R\}$
-
+  \item $\delta:\ Q \times \Gamma\ \rightarrow Q \times \Gamma \times \{L,\ R\}$
+  \item $q_{0}\ \in\ Q$ is the start state,
+  \item $q_{accept}\ \in\ Q$ is the accept state, and
+  \item $q_{reject}\ \in\ Q$ is the reject state, where $q_{reject} \neq q_{accept}$.
 \end{enumerate}
 
 
