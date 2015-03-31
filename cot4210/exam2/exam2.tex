@@ -97,7 +97,10 @@
      \Large{\textbf{Big Discrete Cheat Sheet}} \\
 \end{center}
 
-\section{Turing Machines}
+\section{The Church-Turing Thesis}
+
+
+\subsection{Turing Machines}
 \begin{tabular}{@{}ll@{}}
 A \textbf{\textit{Turing machine}} is a 7-tuple, \\
 \((Q, \Sigma, \Gamma, \delta, q_{0}, q_{accept}, q_{reject} )\) \\
@@ -114,12 +117,22 @@ A \textbf{\textit{Turing machine}} is a 7-tuple, \\
   \item $q_{reject}\ \in\ Q$ is the reject state, where $q_{reject} \neq q_{accept}$.
 \end{enumerate}
 
+The collection of strings that M accepts is \textbf{\textit{the language of M}}, \\
+or \textbf{\textit{the language recognized by M}}, denoted L(M). \\ 
+\textbf{\textit{Defenition 3.5}} \\
+Call the language \textbf{\textit{Turing-Recognizable}} if some Turing machine recognizes it.
+
+\textbf{\textit{Defenition 3.5}} \\
+Call a language \textbf{\textit{Turing-decidable}} or simply  \textbf{\textit{decidable}} \\
+if some turing machine decides it. \\ 
 
 
-Used at the very beginning of a document:
-\verb!\documentclass{!\textit{class}\verb!}!.  Use
-\verb!\begin{document}! to start contents and \verb!\end{document}! to
-end the document.
+\subsection{Turing Machine Variants}
+
+\textbf{\textit{Corrollary 3.15}} \\
+A language is Turing-recognizable if and only if some multitape Turing machine recognizes it.
+
+\subsection{The Defenition of Algorithm}
 
 
 \subsection{Common \texttt{documentclass} options}
