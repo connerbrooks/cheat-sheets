@@ -16,4 +16,4 @@ open:
 	evince ${filename}.pdf &
 
 clean:
-	rm -f ${filename}.{ps,pdf,log,aux,out,dvi,bbl,blg}
+	rm -f *.ps *.pdf *.log *.aux *.out *.dvi *.bbl *.blg
