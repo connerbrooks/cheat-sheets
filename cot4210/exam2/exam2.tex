@@ -129,11 +129,33 @@ if some turing machine decides it. \\
 
 \subsection{Turing Machine Variants}
 
-\textbf{\textit{Corrollary 3.15}} \\
-A language is Turing-recognizable if and only if some multitape Turing machine recognizes it.
+\textbf{\textit{Theorems and Corrollaries}}
+\begin{itemize}
+\item A language is Turing-recognizable if and only if some multitape Turing machine recognizes it.
+\item A language is Turing-recognizable if and only if some nondeterministic Turing machine recognizes it.
+\item A language is decidable if and only if some nondeterministic Turing machine decides it.
+\item A language is Turing-recognizable if and only if some enumerator enumerates it.
+\end{itemize}
 
 \subsection{The Defenition of Algorithm}
-
+\section{Decideability}
+\textbf{\textit{Definitions of DFAs and TMs}}
+\begin{itemize}
+	\item $A_{DFA} = \{\langle B,\omega\rangle | B\ is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
+	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
+	\item $A_{REX} = \{\langle R,\omega\rangle | R\ is\ a\ regex\ that\ generates\ string\ \omega\}$
+	\item $E_{DFA} = \{\langle A\rangle | A\ is\ a\ DFA\ and\ L(A)\ = \emptyset\}$
+	\item $EQ_{DFA} = \{\langle A,B\rangle | A\ and\ B\ are\ DFAs\ and\ L(A) = L(B)\}$
+	\item $A_{CFG} = \{\langle G,\omega\rangle | G\ is\ a\ CFG\ that\ generates\ string\ \omega\}$
+	\item $E_{CFG} = \{\langle G\rangle | G\ is\ a\ CFG\ and\ L(G) = \emptyset\}$
+	\item $EQ_{CFG} = \{\langle G,H\rangle | G\ and\ H\ are\ CFGs\ and\ L(G) = L(H)\}$
+	\item $A_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ accepts\ \omega\}$
+	\item $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
+	\item $E_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M) = \emptyset\}$
+	\item $REGULAR_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M)\ is\ a\ reg\ lang\}$
+	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
+	\item $A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
+\end{itemize}
 
 \subsection{Common \texttt{documentclass} options}
 \newlength{\MyLen}
