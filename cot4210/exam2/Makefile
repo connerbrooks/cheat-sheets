@@ -1,7 +1,12 @@
 filename=exam2
+platform=$(shell uname)
 
 pdf: ps
+ifeq (${platform},Darwin)
+	pstopdf ${filename}.ps
+else
 	ps2pdf ${filename}.ps
+endif
 
 ps: dvi
 	dvips -P pdf -t landscape ${filename}.dvi
