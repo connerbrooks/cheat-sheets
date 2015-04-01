@@ -139,9 +139,10 @@ if some turing machine decides it. \\
 
 \subsection{The Defenition of Algorithm}
 \section{Decideability}
-\textbf{\textit{Definitions of DFAs and TMs}}
+\subsection{DFAs and TMs}
+\textbf{\textit{Definitions}}
 \begin{itemize}
-	\item $A_{DFA} = \{\langle B,\omega\rangle | B\ is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
+	\item $A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
 	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
 	\item $A_{REX} = \{\langle R,\omega\rangle | R\ is\ a\ regex\ that\ generates\ string\ \omega\}$
 	\item $E_{DFA} = \{\langle A\rangle | A\ is\ a\ DFA\ and\ L(A)\ = \emptyset\}$
@@ -156,7 +157,39 @@ if some turing machine decides it. \\
 	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
 	\item $A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
 \end{itemize}
+\textbf{\textit{Facts about them}}
+\begin{itemize}
+	\item $A_{DFA}$ is a decidable language
+	\item $A_{NFA}$ is a decidable language
+	\item $A_{REX}$ is a decidable language
+	\item $E_{DFA}$ is a decidable language
+	\item $EQ_{DFA}$ is a decidable language
+	\item $A_{CFG}$ is a decidable language
+	\item $E_{CFG}$ is a decidable language
+	\item $EQ_{CFG}$ is not a decidable language
+	\item Every context-free language is decidable	
+	\item $A_{TM}$ is undecidable
+	\item $A_{TM}$ is Turing-recognizable
+	\item $\overline{A_{TM}}$ is not Turing Recognizable
+	\item $HALT_{TM}$ is undecidable because we can reduce $A_{TM}$ to $HALT_{TM}$
+	\item $E_{TM}$ is undecidable because we can reduce $A_{TM}$ to $E_{TM}$
+\end{itemize}
 
+\subsection{Countability}
+\begin{itemize}
+	\item A set A is \underline{\textbf{countable}} if either it is finite or it has the same size as N.
+	\item The set of real numbers is uncountable.
+	\item some languages are not Turing-recognizable because there are uncountably many languages yet only countably many turing machines.
+	\item For any undecidable language, either it or its complement is not Turing-recognizable.
+	\item A language \underline{\textbf{is decidable}} iff it is Turing-recognizable and co-Turing-recognizable.
+\end{itemize}
+
+\section{Reducibility}
+A \textbf{\textit{reduction}} is a way of converting one problem to another problem in such a way that a solution to the second problem can be used to solve the first problem.\\
+\ \newline
+In terms of computability theory, if A is reducible to B and B is decidable, A also is decidable. Equivalently, if A is undecidable and reducible to B, B is undecidable.
+
+\vspace{50pt}
 \subsection{Common \texttt{documentclass} options}
 \newlength{\MyLen}
 \settowidth{\MyLen}{\texttt{letterpaper}/\texttt{a4paper} \ }
