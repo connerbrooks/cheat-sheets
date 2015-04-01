@@ -18,7 +18,11 @@ dvi:
 	#latex ${filename}
 
 open:
+ifeq (${platform},Darwin)
+	open ${filename}.pdf &
+else
 	evince ${filename}.pdf &
+endif
 
 clean:
 	rm -f *.ps *.pdf *.log *.aux *.out *.dvi *.bbl *.blg
