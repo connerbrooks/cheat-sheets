@@ -133,42 +133,6 @@ or \textbf{\textit{the language recognized by M}}, denoted L(M). \\
 
 
 \section{4 Decidability}
-\subsection{DFAs and TMs}
-\subsubsection{Defenitions}
-\begin{itemize}
-	\item $A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
-	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
-	\item $A_{REX} = \{\langle R,\omega\rangle | R\ is\ a\ regex\ that\ generates\ string\ \omega\}$
-	\item $E_{DFA} = \{\langle A\rangle | A\ is\ a\ DFA\ and\ L(A)\ = \emptyset\}$
-	\item $EQ_{DFA} = \{\langle A,B\rangle | A\ and\ B\ are\ DFAs\ and\ L(A) = L(B)\}$
-	\item $A_{CFG} = \{\langle G,\omega\rangle | G\ is\ a\ CFG\ that\ generates\ string\ \omega\}$
-	\item $E_{CFG} = \{\langle G\rangle | G\ is\ a\ CFG\ and\ L(G) = \emptyset\}$
-	\item $EQ_{CFG} = \{\langle G,H\rangle | G\ and\ H\ are\ CFGs\ and\ L(G) = L(H)\}$
-	\item $A_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ accepts\ \omega\}$
-  \item $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
-	\item $E_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M) = \emptyset\}$
-	\item $REGULAR_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M)\ is\ a\ reg\ lang\}$
-	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
-	\item $A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
-\end{itemize}
-
-\subsubsection{Info Table}
-\begin{tabular}{| l | c |}
-    \hline                       
-      $A_{DFA}$   & decidable \\ \hline
-      $A_{NFA}$   & decidable \\ \hline
-      $A_{REX}$   & decidable \\ \hline
-      $E_{DFA}$   & decidable \\ \hline
-      $EQ_{DFA}$  & decidable \\ \hline
-      $A_{CFG}$   & decidable \\ \hline
-      $E_{CFG}$   & decidable \\ \hline
-      $EQ_{CFG}$  & undecidable \\ \hline
-      $A_{TM}$    & undecidable \\ \hline
-      $A_{TM}$    & Turing-recognizable \\ \hline
-      $\overline{A_{TM}}$ & not Turing Recognizable \\
-    \hline  
-\end{tabular}
-
 \subsubsection{Other Info}
 \begin{itemize}
 	\item Every context-free language is decidable	
@@ -209,6 +173,42 @@ $HALT_{TM}$ is undecidable because we can reduce $A_{TM}$ to $HALT_{TM}$
 \begin{description}
   \item[5.29] If A $\leq_{m}$ B and A is not Turing-recognizable, then B is not Turing-recognizable.
 \end{description}
+
+\subsection{References}
+\subsubsection{Defenitions}
+\begin{itemize}
+	\item $A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
+	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
+	\item $A_{REX} = \{\langle R,\omega\rangle | R\ is\ a\ regex\ that\ generates\ string\ \omega\}$
+	\item $E_{DFA} = \{\langle A\rangle | A\ is\ a\ DFA\ and\ L(A)\ = \emptyset\}$
+	\item $EQ_{DFA} = \{\langle A,B\rangle | A\ and\ B\ are\ DFAs\ and\ L(A) = L(B)\}$
+	\item $A_{CFG} = \{\langle G,\omega\rangle | G\ is\ a\ CFG\ that\ generates\ string\ \omega\}$
+	\item $E_{CFG} = \{\langle G\rangle | G\ is\ a\ CFG\ and\ L(G) = \emptyset\}$
+	\item $EQ_{CFG} = \{\langle G,H\rangle | G\ and\ H\ are\ CFGs\ and\ L(G) = L(H)\}$
+	\item $A_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ accepts\ \omega\}$
+  \item $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
+	\item $E_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M) = \emptyset\}$
+	\item $REGULAR_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M)\ is\ a\ reg\ lang\}$
+	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
+	\item $A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
+\end{itemize}
+
+\subsubsection{Info Table}
+\begin{tabular}{| l | c |}
+    \hline                       
+      $A_{DFA}$   & decidable \\ \hline
+      $A_{NFA}$   & decidable \\ \hline
+      $A_{REX}$   & decidable \\ \hline
+      $E_{DFA}$   & decidable \\ \hline
+      $EQ_{DFA}$  & decidable \\ \hline
+      $A_{CFG}$   & decidable \\ \hline
+      $E_{CFG}$   & decidable \\ \hline
+      $EQ_{CFG}$  & undecidable \\ \hline
+      $A_{TM}$    & undecidable \\ \hline
+      $A_{TM}$    & Turing-recognizable \\ \hline
+      $\overline{A_{TM}}$ & not Turing Recognizable \\
+    \hline  
+\end{tabular}
 
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize
