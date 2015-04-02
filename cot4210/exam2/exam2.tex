@@ -111,6 +111,8 @@ A \textbf{\textit{Turing machine}} is a 7-tuple, \\
   \item $q_{accept}\ \in\ Q$ is the accept state, and
   \item $q_{reject}\ \in\ Q$ is the reject state, where $q_{reject} \neq q_{accept}$.
 \end{enumerate}
+Transition function $\delta(q,a)$ = $(r,b,\{L,R\})$ \\
+Where $q$ is the current state, $a$ is what we read, $r$ is the state we move to, $b$ is what we will write, and ${L,R}$ is the direction we move.
 
 \begin{description}
   \item[Definition 3.5] Call the language \textbf{\textit{Turing-Recognizable}} if some Turing machine recognizes it.
@@ -139,6 +141,10 @@ or \textbf{\textit{the language recognized by M}}, denoted L(M). \\
 	\item $E_{TM}$ is undecidable because we can reduce $A_{TM}$ to $E_{TM}$
 \end{itemize}
 
+\begin{description}
+  \item[Symmetric difference] $L(C)$ = $(L(A) \cap \overline{L(B)})\cup(\overline{L(A)} \cap L(B))$
+\end{description}
+
 \subsection{Countability}
 \begin{itemize}
 	\item A set A is \underline{\textbf{countable}} if either it is finite or it has the same size as N.
@@ -159,18 +165,17 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
   \item[Definition 5.20] Language A is \textbf{\textit{mapping reducible}} to language B, written A $\leq_{m}$ B, if ther is a computeable function $f:\ \Sigma^{*} \rightarrow \Sigma^{*}$, where for every w, $w \in A \Longleftrightarrow f(w) \in B$ The function $f$ is called the reduction from A to B.
 \end{description}
 
-$HALT_{TM}$ is undecidable because we can reduce $A_{TM}$ to $HALT_{TM}$
-
 \subsubsection{Theorems}
 \begin{description}
-  \item[5.1] $HALT_{TM}$ is undecidable.
   \item[5.22] If A $\leq_{m}$ B and B is decidable, then A is decidable.
-  \item[5.23] If A $\leq_{m}$ B and A is undecidable, then B is undecidable.
+  \item[5.28] If A $\leq_{m}$ B and B is Turing-recognizable, then A is Turing-recognizable.
+  \item[5.29] If A $\leq_{m}$ B and A is not Turing-recognizable, then B is not Turing-recognizable.
   \item[5.30] If $EQ_{TM}$ is neither Turing-recognizable nor co-Turing-recognizable. 
 \end{description}
 
 \subsubsection{Corollary}
 \begin{description}
+  \item[5.23] If A $\leq_{m}$ B and A is undecidable, then B is undecidable.
   \item[5.29] If A $\leq_{m}$ B and A is not Turing-recognizable, then B is not Turing-recognizable.
 \end{description}
 
