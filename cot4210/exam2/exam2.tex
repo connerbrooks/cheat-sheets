@@ -97,16 +97,11 @@
      \Large{\textbf{Big Discrete Cheat Sheet}} \\
 \end{center}
 
-\section{The Church-Turing Thesis}
-
-
-\subsection{Turing Machines}
-\begin{tabular}{@{}ll@{}}
+\section{3 The Church-Turing Thesis}
+\subsection{3.1 Turing Machines}
+\subsubsection{Definitions}
 A \textbf{\textit{Turing machine}} is a 7-tuple, \\
 \((Q, \Sigma, \Gamma, \delta, q_{0}, q_{accept}, q_{reject} )\) \\
-
-\end{tabular}
-
 \begin{enumerate}
   \item $Q$ is the set of states, 
   \item $\Sigma$ is the input alphabet not containing the \textbf{\textit{blank symbol}} $\sqcup$ 
@@ -117,17 +112,16 @@ A \textbf{\textit{Turing machine}} is a 7-tuple, \\
   \item $q_{reject}\ \in\ Q$ is the reject state, where $q_{reject} \neq q_{accept}$.
 \end{enumerate}
 
+\begin{description}
+  \item[Definition 3.5] Call the language \textbf{\textit{Turing-Recognizable}} if some Turing machine recognizes it.
+  \item[Definition 3.6] Call a language \textbf{\textit{Turing-decidable}} or simply  \textbf{\textit{decidable}} if some turing machine decides it. \\ 
+\end{description}
+
+\subsubsection{Side-notes}
 The collection of strings that M accepts is \textbf{\textit{the language of M}}, \\
 or \textbf{\textit{the language recognized by M}}, denoted L(M). \\ 
-\textbf{\textit{Defenition 3.5}} \\
-Call the language \textbf{\textit{Turing-Recognizable}} if some Turing machine recognizes it.
 
-\textbf{\textit{Defenition 3.5}} \\
-Call a language \textbf{\textit{Turing-decidable}} or simply  \textbf{\textit{decidable}} \\
-if some turing machine decides it. \\ 
-
-
-\subsection{Turing Machine Variants}
+\subsection{3.2 Turing Machine Variants}
 
 \textbf{\textit{Theorems and Corrollaries}}
 \begin{itemize}
@@ -137,10 +131,10 @@ if some turing machine decides it. \\
 \item A language is Turing-recognizable if and only if some enumerator enumerates it.
 \end{itemize}
 
-\subsection{The Defenition of Algorithm}
-\section{Decideability}
+
+\section{4 Decidability}
 \subsection{DFAs and TMs}
-\textbf{\textit{Definitions}}
+\subsubsection{Defenitions}
 \begin{itemize}
 	\item $A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
 	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
@@ -157,20 +151,27 @@ if some turing machine decides it. \\
 	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
 	\item $A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
 \end{itemize}
-\textbf{\textit{Facts about them}}
+
+\subsubsection{Info Table}
+\begin{tabular}{| l | c |}
+    \hline                       
+      $A_{DFA}$   & decidable \\
+      $A_{NFA}$   & decidable \\
+      $A_{REX}$   & decidable \\
+      $E_{DFA}$   & decidable \\
+      $EQ_{DFA}$  & decidable \\
+      $A_{CFG}$   & decidable \\
+      $E_{CFG}$   & decidable \\
+      $EQ_{CFG}$  & undecidable \\
+      $A_{TM}$    & undecidable \\
+      $A_{TM}$    & Turing-recognizable \\
+      $\overline{A_{TM}}$ & not Turing Recognizable \\
+    \hline  
+\end{tabular}
+
+\subsubsection{Other Info}
 \begin{itemize}
-	\item $A_{DFA}$ is a decidable language
-	\item $A_{NFA}$ is a decidable language
-	\item $A_{REX}$ is a decidable language
-	\item $E_{DFA}$ is a decidable language
-	\item $EQ_{DFA}$ is a decidable language
-	\item $A_{CFG}$ is a decidable language
-	\item $E_{CFG}$ is a decidable language
-	\item $EQ_{CFG}$ is not a decidable language
 	\item Every context-free language is decidable	
-	\item $A_{TM}$ is undecidable
-	\item $A_{TM}$ is Turing-recognizable
-	\item $\overline{A_{TM}}$ is not Turing Recognizable
 	\item $HALT_{TM}$ is undecidable because we can reduce $A_{TM}$ to $HALT_{TM}$
 	\item $E_{TM}$ is undecidable because we can reduce $A_{TM}$ to $E_{TM}$
 \end{itemize}
@@ -184,7 +185,7 @@ if some turing machine decides it. \\
 	\item A language \underline{\textbf{is decidable}} iff it is Turing-recognizable and co-Turing-recognizable.
 \end{itemize}
 
-\section{Reducibility}
+\section{5 Reducibility}
 A \textbf{\textit{reduction}} is a way of converting one problem to another problem in such a way that a solution to the second problem can be used to solve the first problem.\\
 \ \newline
 In terms of computability theory, if A is reducible to B and B is decidable, A also is decidable. Equivalently, if A is undecidable and reducible to B, B is undecidable.
