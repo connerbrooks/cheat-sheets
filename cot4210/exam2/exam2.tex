@@ -145,7 +145,7 @@ or \textbf{\textit{the language recognized by M}}, denoted L(M). \\
 	\item $E_{CFG} = \{\langle G\rangle | G\ is\ a\ CFG\ and\ L(G) = \emptyset\}$
 	\item $EQ_{CFG} = \{\langle G,H\rangle | G\ and\ H\ are\ CFGs\ and\ L(G) = L(H)\}$
 	\item $A_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ accepts\ \omega\}$
-	\item $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
+  \item $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
 	\item $E_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M) = \emptyset\}$
 	\item $REGULAR_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M)\ is\ a\ reg\ lang\}$
 	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
@@ -155,16 +155,16 @@ or \textbf{\textit{the language recognized by M}}, denoted L(M). \\
 \subsubsection{Info Table}
 \begin{tabular}{| l | c |}
     \hline                       
-      $A_{DFA}$   & decidable \\
-      $A_{NFA}$   & decidable \\
-      $A_{REX}$   & decidable \\
-      $E_{DFA}$   & decidable \\
-      $EQ_{DFA}$  & decidable \\
-      $A_{CFG}$   & decidable \\
-      $E_{CFG}$   & decidable \\
-      $EQ_{CFG}$  & undecidable \\
-      $A_{TM}$    & undecidable \\
-      $A_{TM}$    & Turing-recognizable \\
+      $A_{DFA}$   & decidable \\ \hline
+      $A_{NFA}$   & decidable \\ \hline
+      $A_{REX}$   & decidable \\ \hline
+      $E_{DFA}$   & decidable \\ \hline
+      $EQ_{DFA}$  & decidable \\ \hline
+      $A_{CFG}$   & decidable \\ \hline
+      $E_{CFG}$   & decidable \\ \hline
+      $EQ_{CFG}$  & undecidable \\ \hline
+      $A_{TM}$    & undecidable \\ \hline
+      $A_{TM}$    & Turing-recognizable \\ \hline
       $\overline{A_{TM}}$ & not Turing Recognizable \\
     \hline  
 \end{tabular}
@@ -172,7 +172,6 @@ or \textbf{\textit{the language recognized by M}}, denoted L(M). \\
 \subsubsection{Other Info}
 \begin{itemize}
 	\item Every context-free language is decidable	
-	\item $HALT_{TM}$ is undecidable because we can reduce $A_{TM}$ to $HALT_{TM}$
 	\item $E_{TM}$ is undecidable because we can reduce $A_{TM}$ to $E_{TM}$
 \end{itemize}
 
@@ -187,8 +186,29 @@ or \textbf{\textit{the language recognized by M}}, denoted L(M). \\
 
 \section{5 Reducibility}
 A \textbf{\textit{reduction}} is a way of converting one problem to another problem in such a way that a solution to the second problem can be used to solve the first problem.\\
-\ \newline
-In terms of computability theory, if A is reducible to B and B is decidable, A also is decidable. Equivalently, if A is undecidable and reducible to B, B is undecidable.
+In terms of computability theory, if A is reducible to B and B is decidable, A also is decidable. Equivalently, if A is undecidable and reducible to B, B is undecidable. \\
+
+\subsubsection{Definitions}
+\begin{description}
+  \item[Definition 5.5] Let M be a Turing machine and w an input string. An \textbf{\textit{accepting computation history}} for M on w is a sequence of configurations, $C_{1},C_{2},...,C_{l}$ where $C_{1}$ is the start configuration of M, and each $C_{i}$ legally follows from $C_{i-1}$ according to the rules of M. A \textbf{\textit{rejecting computation history}} for M on w is defined similarly, except that $C_{l}$ is a rejecting configuration.
+  \item[Definition 5.6] A \textbf{\textit{linear bounded automaton}} is a restricted type of Turing machine wherin the tape head isn't permitted to move off the portion of the tape containing the input. If the machine tries to move its head off either end of the input, the head stays where it is--in the same way that the head will not move off the left-hand end of an ordinary Turing machine's tape.
+  \item[Definition 5.20] Language A is \textbf{\textit{mapping reducible}} to language B, written A $\leq_{m}$ B, if ther is a computeable function $f:\ \Sigma^{*} \rightarrow \Sigma^{*}$, where for every w, $w \in A \Longleftrightarrow f(w) \in B$ The function $f$ is called the reduction from A to B.
+\end{description}
+
+$HALT_{TM}$ is undecidable because we can reduce $A_{TM}$ to $HALT_{TM}$
+
+\subsubsection{Theorems}
+\begin{description}
+  \item[5.1] $HALT_{TM}$ is undecidable.
+  \item[5.22] If A $\leq_{m}$ B and B is decidable, then A is decidable.
+  \item[5.23] If A $\leq_{m}$ B and A is undecidable, then B is undecidable.
+  \item[5.30] If $EQ_{TM}$ is neither Turing-recognizable nor co-Turing-recognizable. 
+\end{description}
+
+\subsubsection{Corollary}
+\begin{description}
+  \item[5.29] If A $\leq_{m}$ B and A is not Turing-recognizable, then B is not Turing-recognizable.
+\end{description}
 
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize
