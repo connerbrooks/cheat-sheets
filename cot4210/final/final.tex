@@ -224,6 +224,27 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize
 
+\section{7 Time Complexity}
+\subsection{7.1 Measuring Complexity}
+\begin{description}
+  \item[Definition 7.1] Let M be a deterministic Turing machine that halts on all inputs. The running time or time complexity of M is the function $f: \mathcal{N} \rightarrow \mathcal{N}$, where $f(n)$ is the maximum number of steps that M uses on any input of length n. If $f(n)$ is the running time of M, we say that M runs in time $f(n)$ and that M is an $f(n)$ time Turing machine. Customarily we use n to represent the length of the input. 
+  \item[Defenition 7.2] Let $f$ and $g$ be functions $f,g: \mathcal{N} \rightarrow \mathcal{R}^{+}$. Say that $f(n) = O(g(n))$ if positive integers $c$ and $n_{0}$ exists such that for every integer $ n \leq n_{0}$, $f(n) \leq cg(n)$. When $f(n) = O(g(n))$, we say that $g(n)$ is an upper bound for $f(n)$, or more precisely, that $g(n)$ is an asymptotic upper bound for $f(n)$, to emphasize that we are suppressing constant factors. 
+  \item[Defenition 7.5] Let $f$ and $g$ be functions $f,g: \mathcal{N} \rightarrow \mathcal{R}^{+}$. Say that $f(n) = O(g(n))$ if $$\lim_{x\to\infty} \frac{f(n)}{g(n)} = 0 $$ In other words, $f(n) = o(g(n))$ means that for any real number $c > 0$, a number $n_{0}$ exists, where $f(n) < cg(n)$ for all $n \geq n_{0}$
+  \item[Defenition 7.7] Let $t:\mathcal{N} \rightarrow \mathcal{R}^{+}$ be a function. Define the time complexity class, TIME$(t(n))$, to be the collection of all languages that are decidable by an $O(t(n))$ time Turing machine.
+  \item[Defenition 7.9] Let $N$ be a nondeterministic Turing machine that is a decider. Ther running time of $N$ is the function $f:\mathcal{N} \rightarrow \mathcal{N}$, where $f(n)$ is the maximum number of steps that $N$ uses on any branch of its computation on any input of lenth $n$, as shown in the following figure.
+\end{description}
+
+\subsection{7.2 The Class P}
+\begin{description}
+  \item[Definition 7.12] P is the class of languages that are decidable in polynomial time on a deterministic single-tape Turing machine. In other words, $$P = \bigcup_{k} TIME(n^{k})$$
+\end{description}
+\begin{enumerate}
+  \item P is invariant for all models of computation that are polynomially equivalent to the deterministic single-tape Turing machine.
+  \item P roughly corresponds to the class of problems that are realistically solvable on a computer. 
+\end{enumerate}
+
+
+
 %Copyright \copyright\ 2015 Conner Brooks 
 
 \href{http://github.com/connerbrooks/cheat-sheets}{http://github.com/connerbrooks/cheat-sheets}
