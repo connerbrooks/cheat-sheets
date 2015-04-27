@@ -1,0 +1,265 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\newcommand{\shellcmd}[1]{\\\indent\indent\texttt{\footnotesize #1}}
+
+% To make this come out properly in landscape mode, do one of the following
+% 1.
+%  pdflatex latexsheet.tex
+%
+% 2.
+%  latex latexsheet.tex
+%  dvips -P pdf  -t landscape latexsheet.dvi
+%  ps2pdf latexsheet.ps
+
+
+% If you're reading this, be prepared for confusion.  Making this was
+% a learning experience for me, and it shows.  Much of the placement
+% was hacked in; if you make it better, let me know...
+
+
+% 2008-04
+% Changed page margin code to use the geometry package. Also added code for
+% conditional page margins, depending on paper size. Thanks to Uwe Ziegenhagen
+% for the suggestions.
+
+% 2006-08
+% Made changes based on suggestions from Gene Cooperman. <gene at ccs.neu.edu>
+
+
+% To Do:
+% \listoffigures \listoftables
+% \setcounter{secnumdepth}{0}
+
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+  { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+  {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+    {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+  }
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{*nix Reference Manual}} \\
+\end{center}
+
+\section{PF}
+Rules
+
+\subsection{Minimal Rulesets}
+\begin{verbatim}
+tcp_services = "{ ssh, smtp, domain, 
+www, pop3, auth, https, pop3s }"
+udp_services = "{ domain }"
+
+block all
+pass out proto tcp to port $tcp_services
+pass proto udp to port $udp_services
+
+# Allow ssh
+pass in inet proto tcp from any to port ssh
+
+# Allow ping
+icmp_types = "echoreq"
+pass inet proto icmp icmp-type $icmp_types
+
+# Allow loopback
+set skip on lo
+\end{verbatim}
+
+Reload rule set
+\shellcmd{\$ sudo pfctl -f /etc/pf.conf }
+\shellcmd{\$ sudo pfctl -vf /etc/pf.conf }
+
+
+
+\section{OpenBSD}
+
+\subsection{Set Up PF}
+Just enable this
+\shellcmd{\$ sudo pfctl -e }
+
+\subsection{Disable users}
+DO NOT edit /etc/passwd or /etc/master.password instead
+unlock
+\shellcmd{\# usermod -U <user>}
+lock
+\shellcmd{\# usermod -Z <user>}
+
+
+\section{FreeBSD}
+\subsection{Enable PF}
+Add the following to /etc/rc.conf:
+\shellcmd{pf\_enable="YES"}
+
+Additional options are shown in pfctl(8), they can be passed to PF when it is started.
+Add this entry to /etc/rc.conf and specify andy flags 
+\shellcmd{pf\_flags=""}
+
+PF will not start if it cannot find its ruleset conf file. The default ruleset is in /etc/pf.conf. 
+You can specify a custom conf in /etc/rc.conf.
+\shellcmd{pf\_rules="/path/to/pf.conf"}
+
+Example pf.conf file is available in
+\shellcmd{/usr/share/examples/pf}
+
+To enable logging in /etc/rc.conf add:
+\shellcmd{pflog\_enable="YES"}
+
+To start PF 
+\shellcmd{service pf start}
+start logging
+\shellcmd{service pflog start}
+
+
+\subsection{General Checks}
+Netstat is not the same use sockstat 
+\shellcmd{\# sockstat -4l} \\
+or you can do what austin do 
+\shellcmd{\# netstat -nr} \\
+
+
+Increase securelevel only do this when were pretty sure not much needs to change!
+\begin{verbatim}
+sysctl kern.securelevel=2
+\end{verbatim}
+
+Show process list
+\shellcmd{ps ax }
+show network
+\shellcmd{netstat -a }
+
+\subsection{Disable users}
+DO NOT edit /etc/passwd or /etc/master.password instead
+\shellcmd{\# pw lock/unlock <user>}
+\shellcmd{\# chsh -s <shell> <user>}
+
+\subsection{Static IP}
+
+To static on boot, in /etc/rc.conf:
+\begin{verbatim}
+ifconfig_em0="inet 192.168.0.254 netmask 255.255.255.0"
+defaultrouter="192.168.0.1"
+\end{verbatim}
+
+to do this manually 
+\begin{verbatim}
+ifconfig em0 inet 192.168.0.254 netmask 255.255.255.0
+route delete default; route add default 192.168.0.1
+\end{verbatim}
+
+
+\subsection{ulimit}
+Check current limits
+\shellcmd{\# ulimit -a }
+
+Set limit on processes
+\shellcmd{\# ulimit -u 30 }
+may be
+\shellcmd{\# ulimit -p 30 }
+
+
+\subsection{MySql}
+Install mysql
+\shellcmd{\# pkg install mysql-server }
+
+in /etc/rc.conf add
+\begin{verbatim}
+mysql_enable="YES"
+\end{verbatim}
+
+
+to start mysql
+\shellcmd{\# sh /usr/local/etc/rc.d/mysql-server.sh start}
+
+
+change root password for mysql
+\shellcmd{\# mysql -u root}
+If password set
+\shellcmd{\# mysql -u root -p}
+
+Anonomous use (WE DONT WANT THIS)
+\shellcmd{mysql> SET PASSWORD FOR ''@'localhost' = PASSWORD('newpwd');}
+\shellcmd{mysql> SET PASSWORD FOR ''@'host\_name' = PASSWORD('newpwd');} \\
+
+root account
+\shellcmd{mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpwd');}
+\shellcmd{mysql> SET PASSWORD FOR 'root'@'host\_name' = PASSWORD('newpwd');} \\
+
+
+Show all users for mysql
+\shellcmd{mysql> user mysql;}
+\shellcmd{mysql> select user,host,password from user;} \\
+
+Reload priveleges
+\shellcmd{mysql> flush privileges;}
+
+
+This can all be done with msqyl\_secure\_installation but make sure!
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+%Copyright \copyright\ 2015 Conner Brooks 
+
+\href{http://github.com/connerbrooks/cheat-sheets}{http://github.com/connerbrooks/cheat-sheets}
+
+\end{multicols}
+\end{document}
