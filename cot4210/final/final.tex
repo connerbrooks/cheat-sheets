@@ -4,6 +4,8 @@
 \usepackage{ifthen}
 \usepackage[landscape]{geometry}
 \usepackage{hyperref}
+\usepackage[]{algorithm2e}
+\usepackage{graphicx}
 
 % To make this come out properly in landscape mode, do one of the following
 % 1.
@@ -243,13 +245,91 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
   \item P roughly corresponds to the class of problems that are realistically solvable on a computer. 
 \end{enumerate}
 
+\subsection{7.3 The Class NP}
+
+\begin{itemize}
+  \item SUBSET-SUM = \{ $\langle{ S, t \rangle} | S = \{x_1, \dots , x_k \}$, and for some $\{y_1, \dots , y_k \} \subseteq \{x_1, \dots , x_k \}$ we have $\Sigma y_i = t$ \}
+
+\end{itemize}
+
+
+\section{Tite Solutions}
+\subsection{3 Decidability}
+
+\subsubsection{question a}
+
+$\mathrm{L} = \{ \langle{ M_1, M_2 \rangle} | L(M_1) \cup L(M_2) = \emptyset \}$
+
+Prove that L is undecidable by reducing $\mathrm{HALT}_TM$ to L.
+$\mathrm{HALT}_TM \leq_M L$
+
+Assume TM S decides L we will create a decider for $\mathrm{HALT}_{TM}$ H.
+
+\begin{algorithm}[H]
+ $H \langle{ M, w \rangle}$ \{
+
+ create a TM $M'$ that does not accept w.
+
+ boolean f = S$\langle{ M, M' \rangle}$
+ 
+ return f
+
+ \}
+\end{algorithm}
+
+Because we 
+
+\subsubsection{question b}
+$\mathrm{L} = \{ \langle{ M, S \rangle} | $ M is a standard TM and S is a finite set of strings of {0, 1} such that there exists some string t $\in$ S*, such that M accepts t  \}
+
+Prove that L is undecidable.
+
+Assume the contrary that L is decidable. Let TM M' decide membership in L. We will design a TM R to decide $A_{TM}$ using M'.
+
+\begin{algorithm}[H]
+ $R \langle{ M, w \rangle}$ \{
+
+ create a TM $M_1$ such that if its input isn't w it rejects, If its input is w, it runs the steps of M.
+
+ Thus, 
+
+ L($M_1$) = $\emptyset$ if m doesn't accept w and
+
+ L($M_1$) = \{w\} if m does accept w 
+
+ \}
+\end{algorithm}
+
+If R accepts, then M' accepted. If M' accepts then a string of the form w* $\in$ L($M_1$). But L($M_1$) = \{w\} or L($M_1$) = $\emptyset$. It follows that if a string of the form w* $\in$ L($M_1$), then w $\in$ L($M_1$), which means M accepts w, as desired. Finally, when M' rejects we know w $\in$ L($M_1$) so M doesn't accept w in that case. This proves the correctness of R.
+
+Since $A_{TM}$ is undecidable though, we can conclude that no decider for L exists. Hence, L is undecidable as desired. 
+
+
+
+\subsubsection{c question}
+$\mathrm{L} = \{ \langle{ D, M \rangle} | $ D is a DFA and M is a Turing Machine such that L(M) = L(D) \}
+
+\section{Known Reduction}
+\subsection{3-SAT to CLIQUE}
+\begin{enumerate}
+  \item Pick an instance of 3-SAT with k clause
+  \item Make a vertex for each literal
+  \item Connect each vertex to the literals in other clause that are not the negation
+  \item any k-clique in this graph corresponds to a satisfying assignment
+\end{enumerate}
+
+$\phi = (x_1 \vee x_1 \vee x_2) \wedge (\overline{x_1} \vee \overline{x_2} \vee \overline{x_2} ) \wedge (\overline{x_1} \vee x_2 \vee x_2)$
+
+\includegraphics[width=0.8\linewidth]{satclique}
+ 
+
 
 
 %Copyright \copyright\ 2015 Conner Brooks 
 
 \href{http://github.com/connerbrooks/cheat-sheets}{http://github.com/connerbrooks/cheat-sheets}
 \newline
-Greets to my bud \href{http://github.com/broglea}{brogle}.
+Greetz to my bud \href{http://github.com/broglea}{brogle}.
 
 \end{multicols}
 \end{document}
