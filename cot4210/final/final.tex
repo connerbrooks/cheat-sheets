@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{enumitem}
 
 % To make this come out properly in landscape mode, do one of the following
 % 1.
@@ -70,6 +71,10 @@
                                 {\normalfont\small\bfseries}}
 \makeatother
 
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt}
+
 \newcommand{\cfbox}[2]{%
     \colorlet{currentcolor}{.}%
     {\color{#1}%
@@ -116,9 +121,6 @@
 	\item $E_{TM}$ is undecidable because we can reduce $A_{TM}$ to $E_{TM}$
 \end{itemize}
 
-\begin{description}
-  \item[Symmetric difference] $L(C)$ = $(L(A) \cap \overline{L(B)})\cup(\overline{L(A)} \cap L(B))$
-\end{description}
 
 \subsection{Countability}
 \begin{itemize}
@@ -154,8 +156,7 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
   \item[5.29] If A $\leq_{m}$ B and A is not Turing-recognizable, then B is not Turing-recognizable.
 \end{description}
 
-\subsection{References}
-\subsubsection{Defenitions}
+\subsubsection{Definitions}
 \begin{itemize}
 	\item $A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
 	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
