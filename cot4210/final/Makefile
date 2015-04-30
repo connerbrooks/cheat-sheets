@@ -1,4 +1,4 @@
-filename=exam2
+filename=final
 platform=$(shell uname)
 
 pdf: ps
