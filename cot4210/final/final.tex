@@ -135,7 +135,6 @@
 A \textbf{\textit{reduction}} is a way of converting one problem to another problem in such a way that a solution to the second problem can be used to solve the first problem.\\
 In terms of computability theory, if A is reducible to B and B is decidable, A also is decidable. Equivalently, if A is undecidable and reducible to B, B is undecidable. \\
 
-\subsubsection{Definitions}
 \begin{description}
   \item[Definition 5.5] Let M be a Turing machine and w an input string. An \textbf{\textit{accepting computation history}} for M on w is a sequence of configurations, $C_{1},C_{2},...,C_{l}$ where $C_{1}$ is the start configuration of M, and each $C_{i}$ legally follows from $C_{i-1}$ according to the rules of M. A \textbf{\textit{rejecting computation history}} for M on w is defined similarly, except that $C_{l}$ is a rejecting configuration.
   \item[Definition 5.6] A \textbf{\textit{linear bounded automaton}} is a restricted type of Turing machine wherin the tape head isn't permitted to move off the portion of the tape containing the input. If the machine tries to move its head off either end of the input, the head stays where it is--in the same way that the head will not move off the left-hand end of an ordinary Turing machine's tape.
@@ -157,22 +156,21 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
 \end{description}
 
 \subsubsection{Definitions}
-\begin{itemize}
-	\item $A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
-	\item $A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
-	\item $A_{REX} = \{\langle R,\omega\rangle | R\ is\ a\ regex\ that\ generates\ string\ \omega\}$
-	\item $E_{DFA} = \{\langle A\rangle | A\ is\ a\ DFA\ and\ L(A)\ = \emptyset\}$
-	\item $EQ_{DFA} = \{\langle A,B\rangle | A\ and\ B\ are\ DFAs\ and\ L(A) = L(B)\}$
-	\item $A_{CFG} = \{\langle G,\omega\rangle | G\ is\ a\ CFG\ that\ generates\ string\ \omega\}$
-	\item $E_{CFG} = \{\langle G\rangle | G\ is\ a\ CFG\ and\ L(G) = \emptyset\}$
-	\item $EQ_{CFG} = \{\langle G,H\rangle | G\ and\ H\ are\ CFGs\ and\ L(G) = L(H)\}$
-	\item $A_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ accepts\ \omega\}$
-  \item $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
-	\item $E_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M) = \emptyset\}$
-	\item $REGULAR_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M)\ is\ a\ reg\ lang\}$
-	\item $EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
-	\item $A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
-\end{itemize}
+	$A_{DFA} = \{\langle B,\omega\rangle | B\  is\ a\ DFA\ that\ accepts\ input\ string\ \omega\}$
+\\	$A_{NFA} = \{\langle B,\omega\rangle | B\ is\ an\ NDA\ that\ accepts\ input\ string\ \omega\}$
+\\	$A_{REX} = \{\langle R,\omega\rangle | R\ is\ a\ regex\ that\ generates\ string\ \omega\}$
+\\	$E_{DFA} = \{\langle A\rangle | A\ is\ a\ DFA\ and\ L(A)\ = \emptyset\}$
+\\	$EQ_{DFA} = \{\langle A,B\rangle | A\ and\ B\ are\ DFAs\ and\ L(A) = L(B)\}$
+\\	$A_{CFG} = \{\langle G,\omega\rangle | G\ is\ a\ CFG\ that\ generates\ string\ \omega\}$
+\\	$E_{CFG} = \{\langle G\rangle | G\ is\ a\ CFG\ and\ L(G) = \emptyset\}$
+\\	$EQ_{CFG} = \{\langle G,H\rangle | G\ and\ H\ are\ CFGs\ and\ L(G) = L(H)\}$
+\\	$A_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ accepts\ \omega\}$
+\\  $HALT_{TM} = \{\langle M,\omega\rangle | M\ is\ a\ TM\ and\ M\ halts\ on\ input\ \omega\}$
+\\	$E_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M) = \emptyset\}$
+\\	$REGULAR_{TM} = \{\langle M\rangle | M\ is\ a\ TM\ and\ L(M)\ is\ a\ reg\ lang\}$
+\\	$EQ_{TM} = \{\langle M_{1},M_{2}\rangle | M_{1}\ and\ M_{2}\ are\ TMs\ and\ L(M_{1}) = L(M_{2})\}$
+\\	$A_{LBA} = \{\langle M,\omega\rangle | M\ is\ an\ LBA\ that\ accepts\ string\ \omega\}$
+\\ $ALL_{TM} = \{\langle{M\rangle} | M$ is a TM and $L(M) = \sum^{*}$
 
 \subsubsection{Info Table}
 \begin{tabular}{| l | c |}
@@ -195,6 +193,7 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
       $A_{LBA}$ & decidable \\ \hline
       $E_{LBA}$ & undecidable \\ \hline
       $ALL_{CFG}$ & undecidable \\ \hline
+      $ALL_{TM}$ & undecidable \\ \hline
 \end{tabular}
 
 \rule{0.3\linewidth}{0.25pt}
@@ -207,20 +206,14 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
 
 $\mathrm{L} = \{ \langle{ M_1, M_2 \rangle} | L(M_1) \cup L(M_2) = \emptyset \}$
 
-Prove that L is undecidable by reducing $\mathrm{HALT}_{TM}$ to L.
-$\mathrm{HALT}_{TM} \leq_M L$
+Prove that L is undecidable by reducing $\mathrm{E}_{TM}$ to L.
+$\mathrm{E}_{TM} \leq_M L$
 
-Assume TM S decides L we will create a decider for $\mathrm{HALT}_{TM}$ H.
+Assume TM S decides L we will create a decider for $\mathrm{E}_{TM}$ H.
 
 \begin{algorithm}[H]
- $H \langle{ M, w \rangle}$ \{
-
- create a TM $M'$ that does not accept w.
-
- boolean f = S$\langle{ M, M' \rangle}$
- 
- return f
-
+ $H \langle{ M\rangle}$ \{
+  return $S\langle{M,M\rangle}$
  \}
 \end{algorithm}
 
