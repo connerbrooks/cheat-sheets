@@ -207,8 +207,8 @@ In terms of computability theory, if A is reducible to B and B is decidable, A a
 
 $\mathrm{L} = \{ \langle{ M_1, M_2 \rangle} | L(M_1) \cup L(M_2) = \emptyset \}$
 
-Prove that L is undecidable by reducing $\mathrm{HALT}_TM$ to L.
-$\mathrm{HALT}_TM \leq_M L$
+Prove that L is undecidable by reducing $\mathrm{HALT}_{TM}$ to L.
+$\mathrm{HALT}_{TM} \leq_M L$
 
 Assume TM S decides L we will create a decider for $\mathrm{HALT}_{TM}$ H.
 
@@ -223,8 +223,6 @@ Assume TM S decides L we will create a decider for $\mathrm{HALT}_{TM}$ H.
 
  \}
 \end{algorithm}
-
-Because we 
 
 \subsubsection{question b}
 $\mathrm{L} = \{ \langle{ M, S \rangle} | $ M is a standard TM and S is a finite set of strings of {0, 1} such that there exists some string t $\in$ S*, such that M accepts t  \}
@@ -254,7 +252,21 @@ Since $A_{TM}$ is undecidable though, we can conclude that no decider for L exis
 
 
 \subsubsection{c question}
-$\mathrm{L} = \{ \langle{ D, M \rangle} | $ D is a DFA and M is a Turing Machine such that L(M) = L(D) \}
+L=\{$\langle M \rangle$ | M accepts a finite set of strings\}\\
+Assume L is decidable\\
+Create a decider for L named $S$\\
+We will create a decider for $E_{TM}$, $R$, using $S$\\
+$R\langle M\rangle \{$\\
+\hspace{7pt} bool o = S$\langle M \rangle$ \\
+\hspace{7pt} if(o)\\ 
+\hspace{14pt} Set c = enumarate$\langle M \rangle$\\ 
+\hspace{14pt} if(c.isempty())\{ \\
+\hspace{21pt} accept \\ 
+\hspace{14pt} else \\ 
+\hspace{21pt} reject \\ 
+\hspace{7pt} else \\ 
+\hspace{14pt} reject\} \\
+We have created a decider for $E_{TM}$ but it is undecidable therefore L must be undecidable
 
 \section{Known Reduction}
 \subsection{3-SAT to VERTEX COVER}
@@ -350,24 +362,46 @@ $$SUBSET\mbox{-}SUM\mbox{-}k \leq_{p} SUBSET\mbox{-}SUM$$\\
 \end{enumerate}
 
 \section{Greedy/DP Problems}
-\subsection{Dinner Problem}
+\subsection{Coins/Dinner Problem}
 \begin{lstlisting}
-Public Static void main(String[] args){
-  memo = new long[n+1];
-  Arrays.fill(memo, -1);
-  memo[0] = 0;
-  long ans = ans(n);
-}
-static long ans(int n){
-  if(n <= 0) //base case 1
-    return n == 0 ? 1 : 0;
-  if(memo[n] != -1) //base case 2: check the memo
-    return memo[n];
-  long ans = 0;
-  ans += ans(n-2) + ans(n-5) + ans(n-10);
-  return memo[n] = ans; //save the answer
-}
+public class coins{
+    static int[] memo, nums;
+    static int n, d, oo = 987654321;
+
+    public static int ans(int val){
+        if(val <= 0) //base case 1
+            return val < 0 ? oo : 0;
+        if(memo[val] != -1) //base case 2: check memo
+            return memo[val];
+        int ans = oo;
+        for(int i = 0; i < d; i++)
+            ans = Math.min(ans, ans(val - nums[i]) + 1);
+        return memo[val] = ans; //save answer in memo
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int t = 1;
+        for(;;){
+            n = in.nextInt();
+            d = in.nextInt();
+            if(n == 0 && d == 0)
+                break;
+            memo = new int[n + 1];
+            nums = new int[d];
+            Arrays.fill(memo, -1);
+            memo[0] = 0;
+            for(int i = 0; i < d; i++)
+                nums[i] = in.nextInt();
+            int ans = ans(n);
+            if(ans != oo)
+               sout(ans + "coins"); 
+            else
+               sout("no change");
+            t++; }}}
 \end{lstlisting}
+\includegraphics[width=1\linewidth]{puzzle}
+
+
 %Copyright \copyright\ 2015 Conner Brooks 
 \vspace{5pt}
 \href{http://github.com/connerbrooks/cheat-sheets}{http://github.com/connerbrooks/cheat-sheets}\\
