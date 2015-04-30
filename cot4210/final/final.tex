@@ -304,12 +304,12 @@ We can reduce 3-SAT to SUBSET-SUM by representing the variables and clauses in a
 \begin{tabular}{l | l l l | l l l r }
 & \multicolumn{3}{ c| }{Vars} & \multicolumn{4}{ |c }{Clauses} \\
  & 1 & 2 & 3 & 1 & 2 & 3 & 4 \\ \hline
-\hfill $x_{1}$ & 1 & 0 & 0 & \framebox[1.1\width]{1} \par & 0 & \framebox[1.1\width]{1} \par & 0 \\
+\hfill $x_{1}$ & \cfbox{black}{1} \par & 0 & 0 & \framebox[1.1\width]{1} \par & 0 & \framebox[1.1\width]{1} \par & 0 \\
 \hfill $\overline{x_{1}}$ & 1 & 0 & 0 & 0 & 1 & 0 & 1 \\
-\hfill $x_{2}$ & 0 & 1 & 0 & \cfbox{black}{1} & \framebox[1.1\width]{1} \par & 0 & 0 \\
-\hfill $\overline{x_{2}}$ & 0 & 1 & 0 & 0 & 0 & \cfbox{green}{1} \par & \cfbox{green}{1} \par \\
+\hfill $x_{2}$ & 0 & \cfbox{black}{1} & 0 & \cfbox{black}{1} & \framebox[1.1\width]{1} \par & 0 & 0 \\
+\hfill $\overline{x_{2}}$ & 0 & \cfbox{green}{1} & 0 & 0 & 0 & \cfbox{green}{1} \par & \cfbox{green}{1} \par \\
 \hfill $x_{3}$ & 0 & 0 & 1 & 0 & 0 & 1 & 0 \\
-\hfill $\overline{x_{3}}$ & 0 & 0 & 1 & \framebox[1.1\width]{1} \par & \framebox[1.1\width]{1} \par & 0 & \framebox[1.1\width]{1} \par \\ \hline
+\hfill $\overline{x_{3}}$ & 0 & 0 & \cfbox{black}{1} & \framebox[1.1\width]{1} \par & \framebox[1.1\width]{1} \par & 0 & \framebox[1.1\width]{1} \par \\ \hline
 \hfill $S_{1a}$ & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
 \hfill $S_{1b}$ & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
 \hfill $S_{2a}$ & 0 & 0 & 0 & 0 & \framebox[1.1\width]{1} \par & 0 & 0 \\
